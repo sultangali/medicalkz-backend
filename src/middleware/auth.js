@@ -25,7 +25,7 @@ exports.protect = async (req, res, next) => {
 
   try {
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, "your-super-secret-jwt-key-here-make-it-long-and-complex");
     console.log('Decoded token:', decoded);
 
     // Get user from the token - use userId field from token

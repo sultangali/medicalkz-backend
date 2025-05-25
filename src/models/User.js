@@ -211,8 +211,8 @@ UserSchema.pre('save', async function(next) {
 UserSchema.methods.getSignedJwtToken = function() {
   return jwt.sign(
     { userId: this._id, role: this.role },
-    process.env.JWT_SECRET,
-    { expiresIn: process.env.JWT_EXPIRE }
+    "your-super-secret-jwt-key-here-make-it-long-and-complex",
+    { expiresIn: "30d" }
   );
 };
 
@@ -220,8 +220,8 @@ UserSchema.methods.getSignedJwtToken = function() {
 UserSchema.methods.getRefreshToken = function() {
   return jwt.sign(
     { userId: this._id },
-    process.env.JWT_REFRESH_SECRET,
-    { expiresIn: process.env.JWT_REFRESH_EXPIRE }
+    "your-super-secret-refresh-jwt-key-here-make-it-long-and-complex",
+    { expiresIn: "7d" }
   );
 };
 

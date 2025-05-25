@@ -184,7 +184,7 @@ exports.refreshToken = async (req, res, next) => {
 
     try {
       // Verify refresh token
-      const decoded = jwt.verify(refreshToken, process.env.JWT_REFRESH_SECRET);
+      const decoded = jwt.verify(refreshToken, "your-super-secret-refresh-jwt-key-here-make-it-long-and-complex");
 
       // Get user
       const user = await User.findById(decoded.id);
@@ -399,7 +399,7 @@ const sendTokenResponse = (user, statusCode, res) => {
   const refreshToken = user.getRefreshToken();
 
   const options = {
-    expiresIn: process.env.JWT_EXPIRE
+    expiresIn: "30d"
   };
 
   res.status(statusCode).json({
